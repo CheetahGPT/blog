@@ -1,360 +1,150 @@
-# DocKit
+# My Blog - 基于 DocKit Astro 主题
 
-[![Built with Starlight](https://astro.badg.es/v2/built-with-starlight/tiny.svg)](https://starlight.astro.build)
+这是一个集成了 DocKit Astro 主题的博客项目，使用 Astro、Starlight 和 Tailwind CSS 构建。
 
-A modern, feature-rich documentation theme built on top of **Astro Starlight** with custom components, enhanced UI, and multilingual support.
+## 已集成的组件
 
-## 🚀 Step-by-Step Getting Started Guide
+从 DocKit Astro 主题集成了以下组件和功能：
 
-### Step 1: Clone and Install
+### 📦 组件库
 
-First, clone the repository and install dependencies:
+#### 用户组件 (`src/components/user-components/`)
+- **Button.astro** - 按钮组件
+- **Grid.astro** - 网格布局组件
+- **ListCard.astro** - 列表卡片组件
+- **NewCard.astro** - 新卡片组件
 
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/dockit-astro.git
-cd dockit-astro
+#### 功能组件 (`src/components/`)
+- **Accordion.astro** & **AccordionContainer.astro** - 手风琴折叠组件
+- **Breadcrumb.astro** - 面包屑导航
+- **CTA.astro** - 行动号召组件
+- **HeroTabs.astro** & **HeroTabsItem.astro** - 英雄区域标签页
+- **ImageMod.astro** - 图片组件
+- **LinkButton.astro** - 链接按钮
+- **Section.astro** - 页面区块
+- **SidebarNav.astro** - 侧边栏导航
+- **ThemeDemo.astro** - 主题演示
 
-# Install dependencies
-yarn install
+#### 覆盖组件 (`src/components/override-components/`)
+- **Header.astro** - 自定义头部
+- **Footer.astro** - 自定义页脚
+- **Hero.astro** - 英雄区域
+- **Sidebar.astro** - 侧边栏
+- **TableOfContents.astro** - 目录
+- **ThemeSwitch.astro** - 主题切换器
+- 以及更多 Starlight 覆盖组件...
 
-# Start development server
-yarn dev
+### 🎨 样式文件
+
+- `src/styles/global.css` - 全局样式
+- `src/styles/base.css` - 基础样式
+- `src/styles/components.css` - 组件样式
+- `src/styles/button.css` - 按钮样式
+- `src/styles/navigation.css` - 导航样式
+
+### ⚙️ 配置文件
+
+- `src/config/config.json` - 站点配置
+- `src/config/sidebar.json` - 侧边栏配置
+- `src/config/social.json` - 社交媒体链接
+- `src/config/locals.json` - 国际化配置
+- `src/config/theme.json` - 主题配置
+- `src/config/menu.en.json` / `menu.fr.json` - 多语言菜单
+
+### 📝 示例内容
+
+- `src/content/docs/` - 文档内容（英文和法文）
+- `src/assets/` - 图片和图标资源
+- `public/` - 公共资源文件
+
+## 🚀 项目结构
+
+```text
+my_blog/
+├── public/              # 静态资源
+├── src/
+│   ├── assets/         # 图片、图标等资源
+│   ├── components/     # Astro 组件
+│   │   ├── user-components/      # 用户组件
+│   │   └── override-components/  # Starlight 覆盖组件
+│   ├── config/         # 配置文件
+│   ├── content/        # 内容文件（Markdown/MDX）
+│   │   └── docs/       # 文档页面
+│   ├── styles/         # CSS 样式文件
+│   └── content.config.ts
+├── astro.config.mjs    # Astro 配置
+├── package.json
+└── tsconfig.json
 ```
 
-Your site will be available at `http://localhost:4321`
+## 🧞 命令
 
-### Step 2: Configure Your Site
+从项目根目录运行以下命令：
 
-Configure your site settings by editing the configuration files in `src/config/`:
+| 命令 | 说明 |
+| :------------------------ | :----------------------------------------------- |
+| `npm install`             | 安装依赖                            |
+| `npm run dev`             | 启动本地开发服务器 `localhost:4321`      |
+| `npm run start`           | 启动开发服务器（别名）     |
+| `npm run build`           | 构建生产站点到 `./dist/`          |
+| `npm run preview`         | 本地预览构建结果     |
+| `npm run astro ...`       | 运行 Astro CLI 命令 |
 
-#### Basic Site Configuration
+## 📚 使用指南
 
-Edit `src/config/config.json`:
+### 修改站点配置
+
+编辑 `src/config/config.json` 来自定义站点标题、Logo 等：
 
 ```json
 {
   "site": {
-    "title": "Your Documentation Site",
-    "description": "Your site description",
-    "author": "Your Name",
-    "email": "your.email@example.com",
-    "base_url": "https://yourdomain.com"
+    "title": "My Blog",
+    "logo": "/src/assets/logo-light.svg",
+    "logo_darkmode": "/src/assets/logo-dark.svg"
   }
 }
 ```
 
-#### Theme Customization
+### 配置侧边栏
 
-Edit `src/config/theme.json`:
+编辑 `src/config/sidebar.json` 来自定义文档导航结构。
 
-```json
-{
-  "theme": {
-    "primary_color": "#2563eb"
-  }
-}
-```
+### 添加新页面
 
-### Step 3: Add Your First Documentation Page
+在 `src/content/docs/` 目录下创建新的 `.md` 或 `.mdx` 文件。
 
-Create your first documentation page:
+### 使用组件
 
-```bash
-# Create a new markdown file
-touch src/content/docs/getting-started.md
-```
-
-Add content to your file:
-
-```markdown
----
-title: Getting Started
-description: Welcome to your documentation site
----
-
-# Getting Started
-
-Your first documentation page content goes here...
-```
-
-### Step 4: Configure Sidebar Navigation with Icons
-
-Edit `src/config/sidebar.json` to add navigation with icons:
-
-```json
-{
-  "main": [
-    {
-      "label": "[seti:vite] Getting Started",
-      "translations": {
-        "fr": "[seti:vite] Aan de slag"
-      },
-      "slug": "getting-started"
-    },
-    {
-      "label": "[document] API Reference",
-      "autogenerate": { "directory": "api" }
-    }
-  ]
-}
-```
-
-**Supported Icon Formats:**
-
-- `[seti:vite]` - Seti UI icons (vite, typescript, react, etc.)
-- `[setting]` - Settings/configuration
-- `[document]` - Documentation
-- `[pencil]` - Editing/writing
-
-### Step 5: Use Custom Components in Your Documentation
-
-Create rich documentation using DocKit's custom components:
+在 Markdown 文件中导入和使用组件：
 
 ```mdx
----
-title: Features Overview
----
+import Button from '@/components/user-components/Button.astro';
+import Grid from '@/components/user-components/Grid.astro';
 
-import Grid from "~/components/user-components/Grid.astro";
-import NewCard from "~/components/user-components/NewCard.astro";
-import Button from "~/components/user-components/Button.astro";
-import Accordion from "~/components/user-components/Accordion.astro";
+<Button>点击我</Button>
 
-# Features Overview
-
-<Grid columns={3}>
-  <NewCard title="Fast Setup" icon="rocket">
-    Get started in minutes with our pre-configured setup
-  </NewCard>
-
-{" "}
-<NewCard title="Custom Components" icon="document">
-  Rich set of components for beautiful documentation
-</NewCard>
-
-  <NewCard title="Multilingual" icon="setting">
-    Built-in support for multiple languages
-  </NewCard>
+<Grid>
+  // 网格内容
 </Grid>
-
-<Accordion
-  question="How do I add more pages?"
-  answer="Simply create new .md or .mdx files in the src/content/docs/ directory"
-/>
-
-<Button
-  label="View Full Documentation"
-  link="/docs/components/using-components"
-  variant="primary"
-/>
 ```
 
-### Step 6: Add Multilingual Support (Optional)
+## 🎨 主题功能
 
-To add Dutch (or other language) translations:
+- ✅ 深色/浅色主题切换
+- ✅ 响应式设计
+- ✅ 多语言支持（英文/法文）
+- ✅ 搜索功能
+- ✅ 目录导航
+- ✅ 代码高亮
+- ✅ Tailwind CSS v4
 
-1. **Create language-specific content:**
+## 📖 了解更多
 
-```bash
-mkdir src/content/docs/de
-touch src/content/docs/de/getting-started.md
-```
+- [Astro 文档](https://docs.astro.build)
+- [Starlight 文档](https://starlight.astro.build)
+- [Tailwind CSS](https://tailwindcss.com)
 
-2. **Add translated content:**
+## 📄 许可证
 
-```markdown
----
-title: Aan de slag
-description: Welkom bij je documentatiesite
----
-
-# Aan de slag
-
-Je eerste documentatiepagina inhoud komt hier...
-```
-
-3. **Configure language settings in `src/config/locals.json`:**
-
-```json
-{
-  "defaultLocale": "en",
-  "locales": {
-    "en": {
-      "label": "English",
-      "lang": "en"
-    },
-    "fr": {
-      "label": "Français",
-      "lang": "fr"
-    }
-  }
-}
-```
-
-### Step 7: Customize Styling (Optional)
-
-Add custom styles to `src/styles/global.css`:
-
-```css
-/* Custom theme variables */
-:root {
-  --custom-primary: #your-color;
-  --custom-accent: #your-accent;
-}
-
-/* Custom component styles */
-.custom-hero {
-  background: linear-gradient(
-    45deg,
-    var(--custom-primary),
-    var(--custom-accent)
-  );
-}
-```
-
-### Step 8: Build and Deploy
-
-When ready to deploy:
-
-```bash
-# Build for production
-yarn build
-
-# Preview the build
-yarn preview
-
-# Deploy to your hosting platform
-# (Netlify, Vercel, GitHub Pages, etc.)
-```
-
----
-
-## 📚 Available Components Reference
-
-### Custom User Components
-
-| Component         | Description                   | Example Usage                |
-| ----------------- | ----------------------------- | ---------------------------- |
-| `Accordion.astro` | Collapsible Q&A sections      | FAQ pages, help sections     |
-| `Button.astro`    | Styled buttons with variants  | CTAs, navigation links       |
-| `Grid.astro`      | Responsive grid layouts       | Organizing cards and content |
-| `ListCard.astro`  | Cards with icons and counters | Feature listings, navigation |
-| `NewCard.astro`   | Modern gradient cards         | Showcasing features          |
-
-### Enhanced Starlight Overrides
-
-| Component               | Enhancement                                   |
-| ----------------------- | --------------------------------------------- |
-| `Sidebar.astro`         | Custom icon support with `[icon-name]` syntax |
-| `Header.astro`          | Improved mobile navigation and design         |
-| `Footer.astro`          | Configurable footer sections                  |
-| `Hero.astro`            | Enhanced hero styling and layout              |
-| `TableOfContents.astro` | Better navigation and UX                      |
-
-## 🎯 Icon Reference for Sidebar
-
-### Use Starlight Built-in Icons in Sidebar (use `[icon-name]`)
-
-- `[seti:vite]` - Vite
-- `[seti:typescript]` - TypeScript
-- `[seti:javascript]` - JavaScript
-- `[seti:react]` - React
-- `[seti:json]` - JSON files
-- `[seti:config]` - Configuration
-- `[seti:npm]` - NPM/packages
-
-### Starlight Built-in Icons
-
-- `[document]` - Documentation pages
-- `[setting]` - Settings/configuration
-- `[pencil]` - Editing/writing
-- `[rocket]` - Getting started/launch
-- `[github]` - GitHub integration
-
-## 🌐 Project Structure
-
-```
-.
-├── public/                     # Static assets
-├── src/
-│   ├── assets/                # Images and media
-│   ├── components/
-│   │   ├── override-components/    # Enhanced Starlight components
-│   │   └── user-components/        # Custom DocKit components
-│   ├── config/                # Configuration files
-│   │   ├── config.json        # Site settings
-│   │   ├── theme.json         # Theme customization
-│   │   ├── sidebar.json       # Navigation with icons
-│   │   ├── menu.en.json       # English menu
-│   │   ├── menu.de.json       # Dutch menu
-│   │   └── locals.json        # Language settings
-│   ├── content/
-│   │   ├── docs/              # English documentation
-│   │   │   └── de/            # Dutch translations
-│   │   └── sections/          # Page sections
-│   └── styles/                # Custom CSS
-├── astro.config.mjs           # Astro configuration
-└── package.json
-```
-
----
-
-## � Advanced Usage
-
-### Creating Custom Themes
-
-1. **Modify theme configuration:**
-
-```json
-// src/config/theme.json
-{
-  "theme": {
-    "primary_color": "#your-brand-color"
-  }
-}
-```
-
-2. **Add custom CSS:**
-
-```css
-/* src/styles/global.css */
-:root {
-  --sl-color-accent: #your-accent-color;
-}
-```
-
-### Working with Images
-
-1. **Add images to `src/assets/`:**
-
-```
-src/assets/
-├── logo.svg
-├── hero-image.png
-└── screenshots/
-    └── feature.jpg
-```
-
-2. **Reference in markdown:**
-
-```markdown
-![Alt text](../../../../assets/overview.png)
-```
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                           |
-| :--------------------- | :----------------------------------------------- |
-| `yarn install`         | Installs dependencies                            |
-| `yarn dev`             | Starts local dev server at `localhost:4321`      |
-| `yarn build`           | Build your production site to `./dist/`          |
-| `yarn preview`         | Preview your build locally, before deploying     |
-| `yarn astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `yarn astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Check out [Starlight’s docs](https://starlight.astro.build/), read [the Astro documentation](https://docs.astro.build), or jump into the [Astro Discord server](https://astro.build/chat).
+基于 DocKit Astro 主题构建（MIT License）
