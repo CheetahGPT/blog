@@ -1,0 +1,51 @@
+---
+// 示例：如何使用不同方式导入 Starlight 组件
+// 这个文件展示了所有可用的导入方式
+
+// ============================================
+// 方式 1: 使用本地副本（推荐用于 Icon 和 Badge）
+// ============================================
+import Icon from "@/components/starlight/Icon.astro";
+import Badge from "@/components/starlight/Badge.astro";
+
+// ============================================
+// 方式 2: 通过 @starlight/user-components 别名
+// ============================================
+// import Icon from "@starlight/user-components/Icon.astro";
+// import Badge from "@starlight/user-components/Badge.astro";
+
+// ============================================
+// 方式 3: 通过 @starlight/components 别名访问框架组件
+// ============================================
+import SidebarRestorePoint from "@starlight/components/SidebarRestorePoint.astro";
+import Header from "@starlight/components/Header.astro";
+import Footer from "@starlight/components/Footer.astro";
+
+// ============================================
+// 方式 4: 通过公开 API 导入用户组件
+// ============================================
+// import { Icon, Badge, Card } from "@astrojs/starlight/components";
+
+// ============================================
+// 方式 5: 使用本地工具函数
+// ============================================
+import { flattenSidebar, PAGE_TITLE_ID } from "@/lib/utils/starlight-helpers";
+import type { SidebarEntry, SidebarLink } from "@/lib/utils/starlight-helpers";
+
+// 示例用法
+const { title } = Astro.props;
+---
+
+<div class="example">
+  <Icon name="rocket" size="2em" />
+  <Badge text="New" variant="success" />
+  <h1>{title}</h1>
+</div>
+
+<style>
+  .example {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+</style>

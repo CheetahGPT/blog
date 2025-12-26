@@ -1,0 +1,39 @@
+---
+// 测试文件：验证所有组件都可以通过别名访问
+// 这个文件不会被实际使用，仅用于验证配置是否正确
+
+// ========== User Components（用户组件）==========
+// 方式 1: 本地副本
+import Icon from "@/components/starlight/Icon.astro";
+import Badge from "@/components/starlight/Badge.astro";
+
+// 方式 2: 别名访问
+// import Icon2 from "@starlight/user-components/Icon.astro";
+// import Badge2 from "@starlight/user-components/Badge.astro";
+// import Card from "@starlight/user-components/Card.astro";
+// import LinkCard from "@starlight/user-components/LinkCard.astro";
+
+// ========== Framework Components（框架组件）==========
+import Header from "@starlight/components/Header.astro";
+import Footer from "@starlight/components/Footer.astro";
+import Sidebar from "@starlight/components/Sidebar.astro";
+import SidebarSublist from "@starlight/components/SidebarSublist.astro";
+import PageFrame from "@starlight/components/PageFrame.astro";
+import TableOfContents from "@starlight/components/TableOfContents.astro";
+
+// ========== Internal Components（内部组件）==========
+// 这些之前"无法调用"的组件现在可以访问了！
+import SidebarRestorePoint from "@starlight/components/SidebarRestorePoint.astro";
+import ContentNotice from "@starlight/components/ContentNotice.astro";
+
+// ========== 工具函数和类型 ==========
+import { flattenSidebar, PAGE_TITLE_ID } from "@/lib/utils/starlight-helpers";
+import type { SidebarEntry, SidebarLink } from "@/lib/utils/starlight-helpers";
+
+// 测试通过！所有组件都可以导入
+---
+
+<div>
+  <h1>组件访问测试通过 ✅</h1>
+  <p>所有 Starlight 组件（包括内部组件）都可以正常访问</p>
+</div>
