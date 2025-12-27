@@ -1,11 +1,12 @@
 ---
 import Icon from "@/components/starlight/Icon.astro";
 
-const { icon, title, iconColor, size = "large" } = Astro.props;
+const { icon, title, iconColor, size = "large", borderRadius = "0rem" } = Astro.props;
 ---
 
 <article
   class={`card bg-lightmode-dark dark:bg-dark group ${size === "sm" ? "p-6" : "py-12 px-10"}`}
+  style={`--card-border-radius: ${borderRadius};`}
 >
   {
     icon && (
@@ -56,7 +57,7 @@ const { icon, title, iconColor, size = "large" } = Astro.props;
       /* padding: 48px 40px; */
       flex-direction: column;
       /* gap: clamp(0.5rem, calc(0.125rem + 1vw), 1rem); */
-      border-radius: 1rem;
+      border-radius: var(--card-border-radius, 0rem); /* 使用自定义变量，默认 0rem */
       position: relative;
       transition: all 0.5s ease;
       border: 1px solid var(--sl-color-gray-6);
@@ -83,7 +84,7 @@ const { icon, title, iconColor, size = "large" } = Astro.props;
     }
 
     .title {
-      font-size: var(--sl-text-h4);
+      font-size: var(--sl-text-h5);
       color: var(--sl-color-white);
       line-height: var(--sl-line-height-headings);
       gap: 1rem;
@@ -92,7 +93,7 @@ const { icon, title, iconColor, size = "large" } = Astro.props;
 
     .card .body {
       margin: 0;
-      font-size: clamp(var(--sl-text-body));
+      font-size: clamp(var(--s1-text-body));
     }
   }
 </style>

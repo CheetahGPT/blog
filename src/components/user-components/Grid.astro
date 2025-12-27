@@ -12,9 +12,9 @@ const { columns = 2 } = Astro.props;
 	@layer starlight.components {
 		.card-grid {
 			display: grid;
-			gap: 1rem;
+			gap1: 1.5rem;
 			grid-template-columns: 1fr; /* Default: Single column */
-			margin-top: 1.4rem !important;
+			margin-top: 0 !important;
 		}
 
 		.card-grid > :global(*) {
@@ -41,7 +41,7 @@ const { columns = 2 } = Astro.props;
 		@media (min-width: 1024px) {
 			.card-grid {
 				grid-template-columns: repeat(var(--columns), 1fr);
-				gap: 1.7rem;
+				gap: 1;
 			}
 		}
 
